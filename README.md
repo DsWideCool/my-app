@@ -87,7 +87,7 @@ npm run dev
 
 | 경로 | 설명 |
 | --- | --- |
-| `/` | 랜딩 페이지 (히어로 + 기능 소개 카드) |
+| `/` | **MigrateBoard 대시보드** (진행률, 상태별 칸반, 필터) — 현재 샘플 데이터 |
 | `/dashboard` | 대시보드 (지표 카드, 최근 활동 테이블, Dialog로 프로젝트 생성) |
 | `/form` | React Hook Form + Zod 문의 폼 (Input, Select, Textarea, Checkbox 검증) |
 | `/counter` | Zustand 카운터 (증감 단위 선택, 컴포넌트 간 상태 공유) |

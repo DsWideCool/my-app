@@ -5,10 +5,10 @@ export interface NavItem {
 }
 
 export const siteConfig = {
-  name: "Starter Kit",
-  description: "Next.js 15 + Tailwind CSS + shadcn/ui 기반 스타터킷",
+  name: "MigrateBoard",
+  description: "Notion으로 관리하는 마이그레이션 진행 현황 대시보드",
   mainNav: [
-    { title: "홈", href: "/" },
+    { title: "현황", href: "/" },
     { title: "대시보드", href: "/dashboard" },
     { title: "폼 예제", href: "/form" },
     { title: "카운터", href: "/counter" },
