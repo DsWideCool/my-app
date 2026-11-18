@@ -1,0 +1,481 @@
+{
+  "tasks": [
+    {
+      "id": "d3d9c16b-1b99-48ec-85c0-f634b3caf9f9",
+      "name": "[Phase 1] 스타터 예제 코드 정리",
+      "description": "ROADMAP 1단계의 미완료 항목이다. /counter, /form, /dashboard 라우트와 관련 컴포넌트, 스토어, 검증 스키마의 삭제 여부를 사용자에게 확인한 뒤 결정대로 처리한다.",
+      "notes": "사용자 결정이 필요한 작업이다. 결정 없이 삭제하지 않는다. src/components/ui의 파일은 삭제하지 않는다.",
+      "status": "pending",
+      "dependencies": [],
+      "createdAt": "2026-11-18T05:46:01.833Z",
+      "updatedAt": "2026-11-18T05:46:01.833Z",
+      "relatedFiles": [
+        {
+          "path": "src/config/site.ts",
+          "type": "TO_MODIFY",
+          "description": "내비게이션 메뉴"
+        },
+        {
+          "path": "README.md",
+          "type": "TO_MODIFY",
+          "description": "예제 페이지와 폴더 구조 문서"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "1단계 체크박스"
+        }
+      ],
+      "implementationGuide": "1. 사용자에게 삭제 여부를 확인한다. 2. 삭제로 결정되면 src/app/{counter,form,dashboard}, src/components/{counter,dashboard,form,home}, src/components/user-profile.tsx, src/stores/counter-store.ts와 테스트, src/lib/validations/contact.ts와 테스트를 제거한다. 3. src/config/site.ts의 mainNav에서 해당 메뉴를 제거한다. 4. README.md의 예제 페이지와 폴더 구조를 갱신한다. 5. 유지로 결정되면 코드를 변경하지 않고 ROADMAP에 결정을 기록한다.",
+      "verificationCriteria": "사용자 결정이 ROADMAP에 반영되어 있다. 삭제한 경우 남은 참조가 없고 npm run build, npm run lint, npm test가 통과한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "03806919-0250-418c-a53d-dfcdeae78840",
+      "name": "[Phase 2] shadcn progress와 skeleton 추가",
+      "description": "ROADMAP 2단계의 미완료 항목이다. PRD에 명시된 progress 컴포넌트와 로딩 상태용 skeleton 컴포넌트를 추가한다.",
+      "notes": "src/components/ui는 CLI로만 변경한다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "d3d9c16b-1b99-48ec-85c0-f634b3caf9f9"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:01.833Z",
+      "updatedAt": "2026-11-18T05:46:01.833Z",
+      "relatedFiles": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "CREATE",
+          "description": "shadcn Progress"
+        },
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "CREATE",
+          "description": "shadcn Skeleton"
+        },
+        {
+          "path": "components.json",
+          "type": "REFERENCE",
+          "description": "shadcn 설정"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "2단계 체크박스"
+        }
+      ],
+      "implementationGuide": "npx shadcn@latest add progress skeleton을 실행하고 생성된 파일이 base-nova 스타일과 Base UI 기반인지 확인한다. 생성 파일은 직접 수정하지 않는다.",
+      "verificationCriteria": "두 파일이 src/components/ui에 존재하고 npx tsc --noEmit과 npm run lint가 통과한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "2ebffd8e-08bd-4fc8-bf56-45c80ae0d5f4",
+      "name": "[Phase 3] Notion 실제 데이터베이스 연결 검증",
+      "description": "ROADMAP 3-1의 미완료 항목이다. 사용자가 Integration과 환경 변수를 준비한 뒤 실제 데이터가 칸반 카드로 표시되는지 검증한다.",
+      "notes": "사용자 작업이 필요하다. pre-guard 훅이 .env.local 수정을 차단하므로 에이전트가 값을 작성하지 않는다. API 키를 출력하지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "03806919-0250-418c-a53d-dfcdeae78840"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:01.833Z",
+      "updatedAt": "2026-11-18T05:46:01.833Z",
+      "relatedFiles": [
+        {
+          "path": "src/lib/notion.ts",
+          "type": "REFERENCE",
+          "description": "Notion 조회"
+        },
+        {
+          "path": "src/lib/migration/notion-mapper.ts",
+          "type": "TO_MODIFY",
+          "description": "속성 변환"
+        },
+        {
+          "path": "src/lib/migration/get-migration-tasks.ts",
+          "type": "REFERENCE",
+          "description": "데이터 출처 선택"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "3-1 체크박스"
+        }
+      ],
+      "implementationGuide": "1. 사용자에게 Notion Integration 생성, Migration Tasks 데이터베이스 연결, .env.local의 NOTION_API_KEY와 NOTION_DATABASE_ID 설정을 요청한다. 2. npm run dev로 실행해 Notion 연동 배지와 카드 표시를 확인한다. 3. 스키마에 맞지 않는 행이 경고 로그와 함께 제외되고 페이지가 유지되는지 확인한다. 4. 속성 불일치가 있으면 notion-mapper.ts와 테스트를 수정한다.",
+      "verificationCriteria": "실제 Notion 행이 카드로 표시되고, 진행률이 완료 수 / 전체 수와 일치하며, 잘못된 행이 있어도 페이지가 깨지지 않는다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "957ecbe4-6bb1-460c-9eff-c819c2d80f91",
+      "name": "[Phase 3] 진행률 바를 shadcn Progress로 교체",
+      "description": "ROADMAP 3-2의 미완료 항목이다. progress-summary.tsx에서 div로 직접 구현한 진행률 바를 shadcn Progress로 교체한다.",
+      "notes": "생성된 Progress의 API를 먼저 읽고 사용한다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "2ebffd8e-08bd-4fc8-bf56-45c80ae0d5f4"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:01.833Z",
+      "updatedAt": "2026-11-18T05:46:01.833Z",
+      "relatedFiles": [
+        {
+          "path": "src/components/migration/progress-summary.tsx",
+          "type": "TO_MODIFY",
+          "description": "진행률 바",
+          "lineStart": 31,
+          "lineEnd": 43
+        },
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "REFERENCE",
+          "description": "shadcn Progress"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "2단계와 3-2 체크박스"
+        }
+      ],
+      "implementationGuide": "role=progressbar를 가진 div 블록을 Progress 컴포넌트로 바꾸고 value에 summary.progressPercent를 전달한다. 접근성 이름 전체 진행률을 유지한다. 색상 변경이 필요하면 ui 파일을 고치지 말고 className 등 공개된 방식으로 처리한다.",
+      "verificationCriteria": "필터 변경 시 진행률 바와 퍼센트가 함께 갱신되고, 접근성 이름이 유지되며, 라이트와 다크 테마에서 모두 보인다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "9f2db160-0fd1-4da3-bcc4-ee0454b880c5",
+      "name": "[Phase 4] 필터 옵션 실데이터 재검증",
+      "description": "ROADMAP 4-1의 미완료 항목이다. 스택 전환과 담당자 필터 옵션이 실제 Notion 데이터에서 동적으로 생성되는지 검증하고, 빈 상태 안내가 전체 비어 있음과 필터 결과 없음으로 구분되는지 확인한다.",
+      "notes": "빈 상태 UI를 새로 만들지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "957ecbe4-6bb1-460c-9eff-c819c2d80f91"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:25.423Z",
+      "updatedAt": "2026-11-18T05:46:25.423Z",
+      "relatedFiles": [
+        {
+          "path": "src/lib/migration/stats.ts",
+          "type": "TO_MODIFY",
+          "description": "필터 옵션 계산"
+        },
+        {
+          "path": "src/lib/migration/stats.test.ts",
+          "type": "TO_MODIFY",
+          "description": "필터 테스트"
+        },
+        {
+          "path": "src/components/migration/migration-dashboard.tsx",
+          "type": "REFERENCE",
+          "description": "필터 결과 없음 안내"
+        },
+        {
+          "path": "src/app/page.tsx",
+          "type": "REFERENCE",
+          "description": "전체 비어 있음 안내"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "4-1, 4-2 체크박스"
+        }
+      ],
+      "implementationGuide": "1. 실제 데이터로 getFilterOptions 결과와 Select 옵션을 대조한다. 2. 스택 값이 비어 있는 행과 담당자가 없는 행의 표시(미정, 미배정)를 확인한다. 3. 필터 적용 시 칸반과 진행률이 같은 filteredTasks 기준인지 확인한다. 4. 빈 상태 문구는 page.tsx와 migration-dashboard.tsx에 이미 있으므로 재사용한다. 5. 결함이 있으면 stats.ts와 stats.test.ts를 함께 수정한다.",
+      "verificationCriteria": "옵션이 실제 데이터와 일치하고, 초기화 버튼으로 전체 보기로 복귀하며, 두 가지 빈 상태 안내가 각각 표시된다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "7d1152ca-e0ba-422f-9c2f-a8529098d155",
+      "name": "[Phase 4] Notion 오류 분류와 에러 화면 구현",
+      "description": "ROADMAP 4-2의 미완료 항목이다. Notion API 오류 시 앱이 크래시하지 않도록 src/app/error.tsx와 재시도 버튼을 만들고, 인증 실패와 데이터베이스 미공유 등 주요 오류별 안내 문구를 제공한다.",
+      "notes": "오류 화면에 API 키나 원본 오류 상세를 노출하지 않는다. getMigrationTasks에서 오류를 삼켜 빈 목록으로 바꾸지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "9f2db160-0fd1-4da3-bcc4-ee0454b880c5"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:25.423Z",
+      "updatedAt": "2026-11-18T05:46:25.423Z",
+      "relatedFiles": [
+        {
+          "path": "src/app/error.tsx",
+          "type": "CREATE",
+          "description": "에러 화면"
+        },
+        {
+          "path": "src/lib/migration/notion-error.ts",
+          "type": "CREATE",
+          "description": "오류 분류"
+        },
+        {
+          "path": "src/lib/migration/notion-error.test.ts",
+          "type": "CREATE",
+          "description": "오류 분류 테스트"
+        },
+        {
+          "path": "src/lib/migration/get-migration-tasks.ts",
+          "type": "REFERENCE",
+          "description": "오류 전파 지점"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "4-2 체크박스"
+        }
+      ],
+      "implementationGuide": "1. src/lib/migration/notion-error.ts에 classifyNotionError(error: unknown)를 작성해 isNotionClientError와 APIErrorCode로 unauthorized, notShared, rateLimited, unknown을 반환하고 단위 테스트를 추가한다. 2. src/app/error.tsx를 Client Component로 만들고 reset 재시도 버튼을 제공한다. 3. 프로덕션에서는 서버 오류 메시지가 error.tsx로 전달되지 않고 digest만 전달되므로, 오류별 안내의 전달 방식을 프로덕션 빌드에서 검증해 구현한다. 4. 재검증 실패 시 기존 페이지를 유지하는 동작을 해치지 않는지 확인한다.",
+      "verificationCriteria": "잘못된 API 키와 미공유 데이터베이스로 실행해도 크래시 없이 안내 화면이 표시되고 재시도 버튼이 동작한다. 분류 함수 테스트가 통과한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "44eeb418-bbf5-4c9c-bc4e-5817da344f68",
+      "name": "[Phase 4] 로딩 스켈레톤 구현 (선택)",
+      "description": "ROADMAP 4-2의 선택 항목이다. src/app/loading.tsx에 대시보드 레이아웃과 같은 형태의 스켈레톤 UI를 구현한다.",
+      "notes": "선택 항목이므로 사용자가 제외를 요청하면 건너뛴다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "7d1152ca-e0ba-422f-9c2f-a8529098d155"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:25.423Z",
+      "updatedAt": "2026-11-18T05:46:25.423Z",
+      "relatedFiles": [
+        {
+          "path": "src/app/loading.tsx",
+          "type": "CREATE",
+          "description": "로딩 화면"
+        },
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "REFERENCE",
+          "description": "shadcn Skeleton"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "4-2 체크박스"
+        }
+      ],
+      "implementationGuide": "Skeleton 컴포넌트로 필터 바, 진행률 카드, 칸반 4개 컬럼의 자리 표시자를 만든다. 그리드 클래스는 kanban-board.tsx, progress-summary.tsx와 동일하게 맞춘다.",
+      "verificationCriteria": "로딩 중 레이아웃이 실제 화면과 일치하고 로딩 종료 시 큰 레이아웃 이동이 없다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "504cc73c-c395-4dac-8298-5af8bb6b762c",
+      "name": "[Phase 4] 필터 상태 URL 쿼리 동기화 (선택)",
+      "description": "ROADMAP 4-1의 선택 항목이다. 필터 상태를 ?stack=...&assignee=... 쿼리와 동기화해 공유 URL로 같은 화면을 재현한다.",
+      "notes": "선택 항목이다. 필터 상태의 단일 출처를 유지하고 Zustand를 도입하지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "44eeb418-bbf5-4c9c-bc4e-5817da344f68"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:25.423Z",
+      "updatedAt": "2026-11-18T05:46:25.423Z",
+      "relatedFiles": [
+        {
+          "path": "src/components/migration/migration-dashboard.tsx",
+          "type": "TO_MODIFY",
+          "description": "필터 상태"
+        },
+        {
+          "path": "src/app/page.tsx",
+          "type": "TO_MODIFY",
+          "description": "Suspense 경계"
+        },
+        {
+          "path": "src/lib/migration/stats.ts",
+          "type": "REFERENCE",
+          "description": "필터 옵션"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "4-1 체크박스"
+        }
+      ],
+      "implementationGuide": "migration-dashboard.tsx에서 useSearchParams로 초기 필터를 읽고 변경 시 router.replace로 쿼리를 갱신한다. useSearchParams 사용 부분은 Suspense로 감싼다. 존재하지 않는 옵션 값은 null로 처리한다. 쿼리 변환은 순수 함수로 분리해 테스트한다.",
+      "verificationCriteria": "쿼리가 포함된 URL을 새로 열면 같은 필터가 적용되고, 잘못된 값은 전체 보기로 처리되며, npm run build가 통과한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "9d8081b0-4dbe-4e2f-9484-88a7075f8a62",
+      "name": "[Phase 5] 배포 방식 결정 및 설정 반영",
+      "description": "ROADMAP 5-4의 결정 항목이다. next.config.ts의 output export에서는 ISR이 동작하지 않으므로 서버 런타임 전환과 정적 export 유지(예약 빌드) 중 하나를 사용자가 결정하고 설정에 반영한다. 이후 5-1 ISR 검증의 전제 조건이라 Phase 5의 첫 작업으로 둔다.",
+      "notes": "사용자 결정이 필요하다. 결정 없이 next.config.ts와 deploy.yml을 변경하지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "504cc73c-c395-4dac-8298-5af8bb6b762c"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:51.393Z",
+      "updatedAt": "2026-11-18T05:46:51.393Z",
+      "relatedFiles": [
+        {
+          "path": "next.config.ts",
+          "type": "TO_MODIFY",
+          "description": "출력 방식"
+        },
+        {
+          "path": ".github/workflows/deploy.yml",
+          "type": "TO_MODIFY",
+          "description": "배포 워크플로"
+        },
+        {
+          "path": "shrimp-rules.md",
+          "type": "TO_MODIFY",
+          "description": "9장 미결정 사항 갱신"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "5-4 체크박스"
+        }
+      ],
+      "implementationGuide": "1. 사용자에게 Vercel 등 서버 런타임 전환(권장, 60초 반영 충족)과 GitHub Pages 유지 + 예약 빌드 중 선택을 요청한다. 2. 서버 런타임이면 next.config.ts에서 output, basePath, images.unoptimized 설정을 제거하고 deploy.yml의 처리 방식을 사용자에게 확인한다. 3. GitHub Pages 유지면 deploy.yml의 트리거를 main으로 고치고 schedule과 Notion 시크릿을 추가하며 PRD의 60초 기준 변경을 사용자에게 확인한다.",
+      "verificationCriteria": "결정 내용이 ROADMAP과 shrimp-rules.md에 기록되어 있고 npm run build가 선택한 방식으로 통과한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "2759222e-de85-4d79-9f9a-425af8f08961",
+      "name": "[Phase 5] 렌더링과 성능 검증",
+      "description": "ROADMAP 5-1의 미완료 항목이다. / 라우트의 ISR 생성 여부, Notion API 호출 주기, 클라이언트 컴포넌트 범위를 검증한다.",
+      "notes": "정적 export를 유지하기로 결정한 경우 ISR 항목은 해당 없음으로 ROADMAP에 기록한다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "9d8081b0-4dbe-4e2f-9484-88a7075f8a62"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:51.393Z",
+      "updatedAt": "2026-11-18T05:46:51.393Z",
+      "relatedFiles": [
+        {
+          "path": "src/app/page.tsx",
+          "type": "REFERENCE",
+          "description": "revalidate 설정"
+        },
+        {
+          "path": "src/components/migration/migration-dashboard.tsx",
+          "type": "REFERENCE",
+          "description": "클라이언트 경계"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "5-1 체크박스"
+        }
+      ],
+      "implementationGuide": "1. npm run build 출력에서 / 라우트의 Revalidate 값을 확인한다. 2. npm run start로 연속 요청해 Notion 호출이 재검증 주기마다만 발생하는지 로그로 확인한다. 3. use client 선언 파일을 검색해 상호작용이 없는 컴포넌트에서 제거한다.",
+      "verificationCriteria": "재검증 주기 안의 반복 요청에서 Notion 호출이 추가로 발생하지 않고, use client가 상호작용 컴포넌트에만 남아 있다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "b2a347c6-8d4d-470a-a902-35e9089f01e4",
+      "name": "[Phase 5] 반응형과 접근성 검증",
+      "description": "ROADMAP 5-2의 미완료 항목이다. 375px, 768px, 1024px 이상에서 PRD 레이아웃을 검증하고 테마 대비와 키보드 조작을 확인한다.",
+      "notes": "src/components/ui를 직접 수정하지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "2759222e-de85-4d79-9f9a-425af8f08961"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:51.393Z",
+      "updatedAt": "2026-11-18T05:46:51.393Z",
+      "relatedFiles": [
+        {
+          "path": "src/components/migration/progress-summary.tsx",
+          "type": "TO_MODIFY",
+          "description": "요약 카드 그리드",
+          "lineStart": 47,
+          "lineEnd": 47
+        },
+        {
+          "path": "src/components/migration/kanban-board.tsx",
+          "type": "REFERENCE",
+          "description": "칸반 그리드"
+        },
+        {
+          "path": "src/components/migration/filter-bar.tsx",
+          "type": "REFERENCE",
+          "description": "필터 키보드 조작"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "5-2 체크박스"
+        }
+      ],
+      "implementationGuide": "1. Playwright로 각 폭의 화면을 확인한다. 2. progress-summary.tsx의 요약 카드 sm:grid-cols-4는 PRD의 768px 기준과 다르므로 md:grid-cols-4로 수정한다. 3. 칸반 열 수와 가로 스크롤 여부를 확인한다. 4. 라이트와 다크 테마 대비, Tab과 방향키로 필터를 조작할 수 있는지 확인한다.",
+      "verificationCriteria": "375px 요약 카드 2열과 칸반 1열, 768px 요약 카드 4열과 칸반 2열, 1024px 칸반 4열이 확인되고 가로 스크롤이 없으며 키보드로 필터를 조작할 수 있다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "04c584fd-0849-4d0d-b182-458ca2e0454f",
+      "name": "[Phase 5] 품질 점검과 문서 갱신",
+      "description": "ROADMAP 5-3의 미완료 항목이다. 전체 품질 검사를 통과시키고 스타터 잔여 내용을 정리해 README를 현재 프로젝트 기준으로 갱신한다.",
+      "notes": "프로젝트 표시 이름 변경은 사용자의 결정을 따른다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "b2a347c6-8d4d-470a-a902-35e9089f01e4"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:51.393Z",
+      "updatedAt": "2026-11-18T05:46:51.393Z",
+      "relatedFiles": [
+        {
+          "path": "README.md",
+          "type": "TO_MODIFY",
+          "description": "프로젝트 문서"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "5-3 체크박스"
+        }
+      ],
+      "implementationGuide": "1. npm run lint, npm test, npm run build를 실행하고 실패를 수정한다. 2. README.md의 연동 예정, 샘플 데이터, 랜딩 페이지 등 오래된 설명을 현재 상태로 고친다. 3. 배포 방식과 환경 변수 설정 방법을 README에 반영한다.",
+      "verificationCriteria": "npm run lint, npm test, npm run build가 모두 통과하고 README 내용이 실제 코드와 일치한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    },
+    {
+      "id": "abdf9994-9ec1-4128-80d4-6c2bf4c16ac6",
+      "name": "[Phase 5] 프로덕션 배포와 최종 검증",
+      "description": "ROADMAP 5-4의 남은 항목이다. 배포 환경에 환경 변수를 등록하고 배포한 뒤 PRD 성공 기준을 프로덕션에서 검증한다.",
+      "notes": "배포는 외부에 공개되는 작업이므로 실행 전에 사용자 승인을 받는다. 비밀 값을 로그나 문서에 남기지 않는다.",
+      "status": "pending",
+      "dependencies": [
+        {
+          "taskId": "04c584fd-0849-4d0d-b182-458ca2e0454f"
+        }
+      ],
+      "createdAt": "2026-11-18T05:46:51.393Z",
+      "updatedAt": "2026-11-18T05:46:51.393Z",
+      "relatedFiles": [
+        {
+          "path": "docs/ROADMAP.md",
+          "type": "TO_MODIFY",
+          "description": "5-4 체크박스와 공유 URL"
+        },
+        {
+          "path": "docs/PRD.md",
+          "type": "REFERENCE",
+          "description": "8장 성공 기준"
+        }
+      ],
+      "implementationGuide": "1. 사용자에게 배포 환경의 NOTION_API_KEY, NOTION_DATABASE_ID 등록을 요청한다. 2. 사용자 승인 후 배포한다. 3. Notion에서 상태를 변경해 반영 시간을 측정한다. 4. 필터 일관성과 375px 표시를 프로덕션 URL에서 확인한다. 5. 공유 URL을 ROADMAP에 기록한다.",
+      "verificationCriteria": "PRD 8장의 성공 기준 4가지를 프로덕션에서 모두 충족한다.",
+      "analysisResult": "docs/ROADMAP.md의 미완료 항목을 Phase 1~5 순서대로 완료해 Notion 데이터베이스 Migration Tasks 기반 읽기 전용 대시보드의 MVP를 배포한다. 모든 작업은 shrimp-rules.md를 따르고, 완료 시 npx tsc --noEmit, npm run lint, npm test를 통과시키며 docs/ROADMAP.md 체크박스를 갱신한다."
+    }
+  ]
+}
